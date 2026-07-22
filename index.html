@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Till Winkler — Nachhilfe in Mathematik &amp; Physik (online)</title>
+<meta name="description" content="Online-Nachhilfe in Mathe und Physik von Till Winkler — von der Unterstufe bis zur Abiturvorbereitung, alle Schulformen.">
+<style>
+  /* ============================================================
+     DESIGN-TOKEN  (Akzentfarbe hier zentral änderbar: --accent)
+     ============================================================ */
+  :root {
+    --accent: #0d9488;          /* Türkisgrün – Akzent */
+    --accent-hover: #0b7d72;
+    --accent-soft: #ccfbf1;
+    --bg: #ffffff;
+    --bg-alt: #f5f7f8;
+    --text: #14201e;
+    --text-soft: #5b6b68;
+    --border: #e3e8e7;
+    --card: #ffffff;
+    --shadow: 0 1px 3px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.05);
+    --radius: 14px;
+    --maxw: 900px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --accent: #2dd4bf;
+      --accent-hover: #5eead4;
+      --accent-soft: #113a35;
+      --bg: #0c1413;
+      --bg-alt: #121c1a;
+      --text: #e6f0ee;
+      --text-soft: #9fb0ac;
+      --border: #23302d;
+      --card: #121c1a;
+      --shadow: 0 1px 3px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+  main section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+  h2 { font-size: 1.7rem; margin-bottom: 8px; letter-spacing: -.01em; }
+  .section-lead { color: var(--text-soft); margin-bottom: 32px; max-width: 640px; }
+
+  /* ===================== NAVIGATION ===================== */
+  header.nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { font-weight: 700; letter-spacing: -.02em; }
+  .brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 22px; }
+  .nav-links a { color: var(--text-soft); font-size: .95rem; }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+  @media (max-width: 560px) { .nav-links { display: none; } }
+
+  /* ===================== HERO ===================== */
+  .hero { padding: 96px 0 84px; }
+  .hero .eyebrow {
+    display: inline-block; font-size: .8rem; font-weight: 600;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 5px 12px; border-radius: 999px; margin-bottom: 20px;
+  }
+  .hero h1 { font-size: clamp(2.1rem, 6vw, 3.3rem); line-height: 1.1; letter-spacing: -.03em; margin-bottom: 16px; }
+  .hero p { font-size: 1.15rem; color: var(--text-soft); max-width: 620px; }
+  .cta { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 12px 22px; border-radius: 10px; font-weight: 600; font-size: .95rem; }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.primary:hover { text-decoration: none; background: var(--accent-hover); }
+  .btn.ghost { border: 1px solid var(--border); color: var(--text); }
+  .btn.ghost:hover { text-decoration: none; border-color: var(--accent); }
+
+  /* ===================== KARTEN / RASTER ===================== */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow);
+    transition: transform .15s ease, border-color .15s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+  .card p { color: var(--text-soft); font-size: .95rem; margin-bottom: 14px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: .75rem; color: var(--accent);
+    background: var(--accent-soft); border: 1px solid transparent;
+    padding: 3px 10px; border-radius: 999px; font-weight: 500;
+  }
+  .info-line {
+    margin-top: 24px; padding: 14px 18px; border-radius: 10px;
+    background: var(--bg-alt); border: 1px solid var(--border);
+    color: var(--text-soft); font-size: .95rem;
+  }
+
+  /* ===================== ABLAUF (Schritte) ===================== */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; counter-reset: step; }
+  .step { position: relative; padding-left: 52px; }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; left: 0; top: 0;
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .step h3 { font-size: 1.05rem; margin-bottom: 4px; }
+  .step p { color: var(--text-soft); font-size: .95rem; }
+
+  /* ===================== ÜBER MICH ===================== */
+  .about p { max-width: 640px; margin-bottom: 14px; }
+
+  /* ===================== KONTAKT & FOOTER ===================== */
+  .contact-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; }
+  .note { color: var(--text-soft); font-size: .85rem; margin-top: 16px; }
+  footer { padding: 32px 0; text-align: center; color: var(--text-soft); font-size: .9rem; }
+</style>
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <span class="brand">Till <span>Winkler</span></span>
+      <nav class="nav-links" aria-label="Hauptnavigation">
+        <a href="#angebot">Angebot</a>
+        <a href="#ablauf">So läuft's</a>
+        <a href="#ueber">Über mich</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+  <!-- ===================== HERO ===================== -->
+  <div class="wrap">
+    <section class="hero" style="border-bottom:none;">
+      <span class="eyebrow">Online-Nachhilfe · Mathematik &amp; Physik</span>
+      <h1>Mathe &amp; Physik verstehen — statt nur auswendig lernen</h1>
+      <p>Persönliche Online-Nachhilfe von Till Winkler. Von der Unterstufe bis
+         zur Abiturvorbereitung, für alle Schulformen.</p>
+      <div class="cta">
+        <a class="btn primary" href="#kontakt">Kostenloses Kennenlernen</a>
+        <a class="btn ghost" href="#ablauf">So läuft's</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== ANGEBOT / FÄCHER ===================== -->
+  <section id="angebot" style="background:var(--bg-alt);">
+    <div class="wrap">
+      <h2>Mein Angebot</h2>
+      <p class="section-lead">Ich helfe dir, den Stoff wirklich zu durchdringen —
+         mit Geduld, klaren Erklärungen und Übung an echten Aufgaben.</p>
+      <div class="grid">
+        <article class="card">
+          <div class="icon" aria-hidden="true">📐</div>
+          <h3>Mathematik</h3>
+          <p>Von Bruchrechnung über Funktionen und Geometrie bis zur Analysis und
+             Stochastik in der Oberstufe.</p>
+          <div class="tags"><span class="tag">Unterstufe</span><span class="tag">Mittelstufe</span><span class="tag">Abitur</span></div>
+        </article>
+        <article class="card">
+          <div class="icon" aria-hidden="true">🧲</div>
+          <h3>Physik</h3>
+          <p>Mechanik, Elektrizität, Optik und mehr — anschaulich erklärt und mit
+             Bezug zum Alltag.</p>
+          <div class="tags"><span class="tag">Mittelstufe</span><span class="tag">Oberstufe</span><span class="tag">Abitur</span></div>
+        </article>
+      </div>
+      <!-- Klassenspanne ggf. anpassen -->
+      <p class="info-line">Alle Schulformen · Unterstufe bis Abiturvorbereitung · 100&nbsp;% online</p>
+    </div>
+  </section>
+
+  <!-- ===================== ABLAUF ===================== -->
+  <section id="ablauf">
+    <div class="wrap">
+      <h2>So läuft die Online-Nachhilfe</h2>
+      <p class="section-lead">Unkompliziert starten – in drei Schritten.</p>
+      <div class="steps">
+        <div class="step">
+          <h3>Kennenlernen</h3>
+          <p>Kurzes, kostenloses Erstgespräch: Wo klemmt es, welche Ziele gibt es?</p>
+        </div>
+        <div class="step">
+          <h3>Online-Unterricht</h3>
+          <p>Wir arbeiten per Videocall mit digitalem Whiteboard an genau deinen Themen.</p>
+        </div>
+        <div class="step">
+          <h3>Dranbleiben</h3>
+          <p>Du bekommst passende Übungen und Feedback, damit der Fortschritt bleibt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ÜBER MICH ===================== -->
+  <section id="ueber" class="about" style="background:var(--bg-alt);">
+    <div class="wrap">
+      <h2>Über mich</h2>
+      <p class="section-lead">Wer dich unterrichtet.</p>
+      <p>Hallo, ich bin <strong>Till Winkler</strong>. Ich gebe Nachhilfe in
+         Mathematik und Physik und erkläre die Dinge so lange auf verschiedene
+         Arten, bis es „klick" macht.</p>
+      <!-- BITTE ERGÄNZEN: dein Hintergrund (Studium/Ausbildung, Erfahrung,
+           was dir beim Unterrichten wichtig ist). -->
+      <p style="color:var(--text-soft);">[BITTE ERGÄNZEN: dein Hintergrund — z.B.
+         Studium/Ausbildung, Erfahrung als Nachhilfelehrer, deine Unterrichtsphilosophie.]</p>
+    </div>
+  </section>
+
+  <!-- ===================== KONTAKT ===================== -->
+  <section id="kontakt">
+    <div class="wrap">
+      <h2>Kontakt</h2>
+      <p class="section-lead">Interesse an einem kostenlosen Kennenlernen? Schreib mir gern.</p>
+      <div class="contact-links">
+        <!-- BITTE ERGÄNZEN: echte Kontaktdaten eintragen -->
+        <a class="btn primary" href="mailto:[BITTE ERGÄNZEN]">✉︎ E-Mail schreiben</a>
+        <a class="btn ghost" href="tel:[BITTE ERGÄNZEN]">☎ Anrufen</a>
+      </div>
+      <p class="note">
+        E-Mail: [BITTE ERGÄNZEN: deine@email.de] · Telefon: [BITTE ERGÄNZEN: optional]<br>
+        Adresse: [BITTE ERGÄNZEN: fügst du später selbst hinzu]
+      </p>
+    </div>
+  </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wrap">© <span id="year"></span> Till Winkler · Online-Nachhilfe in Mathematik &amp; Physik</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
